@@ -12,6 +12,7 @@ function Button({ children, disabled, to, type, onClick }) {
     secondary:
       'text uppercase-stone-800 text-sm px-4 py-3  md:px-6 md:py-3.5 inline-block rounded-full  text-stone-400 border-2 border-stone-300 font-semibold tracking-wide transition-colors duration-300 hover:bg-stone-300 focus:outline-none focus:ring focus:ring-stone-300 hover:text-stone-800 focus:ring-offset-2 disabled:cursor-not-allowed ',
   };
+
   if (to) {
     return (
       <Link className={style[type]} to="/order/new">
@@ -19,6 +20,7 @@ function Button({ children, disabled, to, type, onClick }) {
       </Link>
     );
   }
+
   if (onClick) {
     return (
       <button disabled={disabled} onClick={onClick} className={style[type]}>
@@ -26,6 +28,7 @@ function Button({ children, disabled, to, type, onClick }) {
       </button>
     );
   }
+
   return (
     <button disabled={disabled} className={style[type]}>
       {children}
@@ -34,10 +37,10 @@ function Button({ children, disabled, to, type, onClick }) {
 }
 
 Button.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.node.isRequired,
   disabled: PropTypes.bool,
   to: PropTypes.string,
-  type: PropTypes.string,
+  type: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
 
